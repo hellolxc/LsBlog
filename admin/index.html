@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>后台管理</title>
+	<script type="text/javascript" src="showdown.min.js"></script>
+	<script type="text/javascript" src="vue.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/prism.css">
+	<script type="text/javascript" src="../css/prism.js"></script>
+</head>
+
+<style type="text/css">
+html {height: 100%;}
+body {min-height: 100%;font-family: NotoSansHans-Regular,AvenirNext-Regular,arial,Hiragino Sans GB,"Microsoft Yahei","Hiragino Sans GB","WenQuanYi Micro Hei",sans-serif; line-height: 1.6}
+body,div,dl,dt,dd,h1,h2,h3,h4,h5,h6,input,a,p,textarea{margin: 0;padding: 0;}
+
+a{text-decoration: none;display: block;}
+img{border: none;display: block}
+.top-bar{height: 40px;width: 100%;background: black;position: fixed;z-index: 99}	
+
+
+/*代码*/
+.detail-article-body {height: 100%;width: 100%;padding-right: 30px}
+.detail-article-body h1{color: #000;font-size: 24px;text-align: center; font-weight: normal;padding-bottom:10px}
+.detail-article-body h2{color: #000;font-size: 20px;font-weight: normal;margin-top: 40px} 
+.detail-article-body h3{color: #000;font-size: 18px;font-weight: normal;margin-top: 20px} 
+.detail-article-body h4{color: #000;font-size: 17px;font-weight: normal;margin-top: 20px}
+.detail-article-body p{padding: 10px}
+
+pre {font-size: 15px;text-indent:0}
+div.code-toolbar{margin: 10px 0;}
+blockquote{}
+
+</style>
+
+<body>
+
+	<div id="app" style="min-height: 100%;min-width: 100%;">
+		
+		<div class="top-bar"></div>
+		
+		
+		<div style="position:absolute; top:40px;bottom: 0;left: 0;right: 0;">
+			
+			<!-- 编辑区 -->
+			<div style="width: 45%;position: absolute;left:0;right:0;top:0px;bottom:0;overflow-y: scroll;overflow-x: hidden;background: #F9F9F5">
+				<div style="position: relative;height: 100%;width: 100%;">
+					<div style="position: absolute;top:0px;left: 0;bottom: 0px;right: 0;overflow: hidden;">
+						<textarea v-model ="makrdownText" style="height: 100%;width: 100%;border:0;outline:none;font-size: 14px;font-weight: normal;background: #F9F9F5;" autofocus></textarea>
+					</div>
+				</div>
+			</div>
+		
+
+			<!-- 展示区 -->
+			<div style="width: 55%;position: absolute;right:0;top:0px;bottom:0;overflow-y: scroll;overflow-x: hidden;background: #F9F9F5">
+				<div style="position: relative;height: 100%;width: 100%;">
+					<div style="position: absolute;top:0;left: 0;bottom: 0;right: 40px">
+						<div class="detail-article-body" v-html="markdownHtml"></div>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+		
+		
+		
+	</div>
+
+</body>
+
+
+<script>
+	var converter = new showdown.Converter();
+  
+
+	var app = new Vue({
+		el: '#app',
+		data: {
+			intervalId: 0,
+			time:1000,//50ms
+			makrdownText:'# 开始你的创作',
+			markdownHtml:''
+		},
+
+		methods:{
+			//关闭渲染
+			//启动渲染
+			//渲染
+			//保存
+		},
+		created: function() {
+		    this.intervalId = setInterval(() => {
+		        this.markdownHtml  = converter.makeHtml(this.makrdownText);
+				this.$nextTick(function(){
+					Prism.highlightAll();
+				});
+		    }, this.time);
+		},
+		//销毁定时器
+		beforeDestroy () {
+        	clearInterval(this.intervalId)
+    	}
+	})
+
+</script>
+
+
+</html>

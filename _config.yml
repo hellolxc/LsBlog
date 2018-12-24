@@ -1,1 +1,6 @@
 theme: jekyll-theme-cayman
+deploy：
+  type： git
+  repo： <repository  url， 从GitHub 复制 >
+  branch： [branch]
+  message： [message]

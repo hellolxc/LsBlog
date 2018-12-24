@@ -59,15 +59,14 @@ img{border: none;display: block}
 
 .article-content{width: 100%;height: auto;overflow:hidden;font-weight: normal;font-size: 17px;line-height: 1.8;color: #525252;text-align: justify;}
 
-.article-content p{padding: 10px}
+.article-content p{padding: 10px 0}
 .article-content ul{list-style-type: disc;list-style:disc;padding-left: 40px;padding:0  40px}
 .article-content li{list-style-type: disc;list-style:disc;padding-left: 5px}
 
 /*代码*/
 pre {font-size: 15px;text-indent:0}
 div.code-toolbar{margin: 10px 0;}
-blockquote{border-left: 5px solid #eee;background: none repeat scroll 0 0 rgba(102,128,153,.05);border-left-width: 10px;}
-
+blockquote{border-left: 5px solid #eee;background: none repeat scroll 0 0 rgba(102,128,153,.05);border-left-width: 10px;padding-left: 20px;}
 
 /*多屏适配*/
 @media only screen and (max-width:940px){

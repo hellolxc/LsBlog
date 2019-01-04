@@ -11,7 +11,7 @@ define('DOCUMENT_ROOT', getenv("HOME").'/sl/');
 
 
 //判断环境
-if(php_sapi_name() === 'cli-server') {//web 服务器
+if (php_sapi_name() === 'cli-server') {//web 服务器
     return new app\web\Router();
 } else { //命令行
     return new app\cli\Index();

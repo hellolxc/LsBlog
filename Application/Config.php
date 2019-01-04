@@ -8,16 +8,15 @@
 
 namespace app;
 
-
 class Config
 {
     protected static $instance = null;
 
     /** @var array 配置 */
-    public  $config = [];
+    public $config = [];
 
     /** @var array 默认配置 */
-    protected  $defaultConfig = [
+    protected $defaultConfig = [
         'port' => 8000,
     ];
 
@@ -28,6 +27,7 @@ class Config
             //用户配置覆盖默认配置
             static::$instance->config = array_merge(static::$instance->defaultConfig, \Spyc::YAMLLoad(DOCUMENT_ROOT.'config.yml'));
         }
+
         return static::$instance;
     }
 
@@ -38,7 +38,7 @@ class Config
      */
     public function get($name)
     {
-        if(empty($this->config[$name])){
+        if (empty($this->config[$name])) {
             throw new \Exception("Error Config $name Not Exists", 1);
         } else {
             return $this->config[$name];
@@ -47,10 +47,13 @@ class Config
 
     public function set($key, $value)
     {
-
     }
 
-    private function __construct(){}
+    private function __construct()
+    {
+    }
 
-    protected function __clone(){}
+    protected function __clone()
+    {
+    }
 }

@@ -24,9 +24,10 @@ class NewService
     {
         $result = $this->file->exists($fileName);
 
-        if($result) {
+        if ($result) {
             throw new \Exception('文件已存在');
         }
+
         return $this->file->create($fileName);
     }
 }

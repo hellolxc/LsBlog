@@ -27,7 +27,7 @@ class NewCommand extends Command
     {
         $newService = new NewService();
         $fileName = $input->getArgument('fileName');
-        if(empty($fileName)){
+        if (empty($fileName)) {
             $output->writeln('<error>error: 请输入文件名字</error>');
             exit();
         }
@@ -35,7 +35,7 @@ class NewCommand extends Command
         $fileName = DOCUMENT_ROOT.'article/'.$fileName.'.md';
         $result = $newService->create($fileName);
 
-        if($result){
+        if ($result) {
             $output->writeln('<info>创建成功</info>');
         } else {
             $output->writeln('<error>error: 创建失败</error>');

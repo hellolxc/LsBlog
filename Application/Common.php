@@ -7,9 +7,10 @@
 
 
 if (!function_exists('config')) {
-    function config($name, $value=''){
+    function config($name, $value = '')
+    {
         $config = \app\Config::getInstance();
+
         return empty($value) ? $config->get($name) : $config->set($name, $value);
     }
 }
-
